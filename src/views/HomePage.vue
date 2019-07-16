@@ -27,26 +27,15 @@
         </v-flex>
       </v-layout>
 
-      <!-- Portfolio -->
+      <!-- Board -->
       <v-layout my-5>
         <v-flex xs12 >
-          <router-link to="/Portfolio" style="text-decoration:none; color:black">
-          <h2 class="display-1 font-weight-medium my-5 text-xs-center">Portfolio</h2>
+          <router-link to="/Board" style="text-decoration:none; color:black">
+          <h2 class="display-1 font-weight-medium my-5 text-xs-center">Board</h2>
         </router-link>
-          <PortfolioList></PortfolioList>
+          <BoardList></BoardList>
         </v-flex>
       </v-layout>
-
-      <!-- Post -->
-      <v-layout my-5>
-        <v-flex xs12>
-          <router-link to="/Post" style="text-decoration:none; color:black">
-          <h2 class="display-1 font-weight-medium my-5 text-xs-center">Post</h2>
-        </router-link>
-          <PostList :column="2"></PostList>
-        </v-flex>
-      </v-layout>
-
 
       <!-- Github -->
       <v-layout my-5>
@@ -97,8 +86,7 @@
 <script>
 import Header from '../components/Header'
 import ImgBanner from '../components/ImgBanner'
-import PortfolioList from '../components/PortfolioList'
-import PostList from '../components/PostList'
+import BoardList from '../components/BoardList'
 import RepositoryList from '../components/RepositoryList'
 import Footer from '../components/Footer'
 import FirebaseService from '@/services/FirebaseService'
@@ -145,8 +133,7 @@ export default {
     },
 	components: {
 		ImgBanner,
-		PortfolioList,
-		PostList,
+		BoardList,
 		RepositoryList
 	},
 	methods: {

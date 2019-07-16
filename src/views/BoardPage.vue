@@ -1,34 +1,34 @@
 <template>
   <div>
     <ImgBanner :pagename="routeName()">
-      <div style="line-height:1.2em; font-size:10vw; font-family: Aladdin;" slot="text">PORTFOLIO</div>
+      <div style="line-height:1.2em; font-size:10vw; font-family: Aladdin;" slot="text">BOARD</div>
     </ImgBanner>
     <v-container>
 
-      <!-- Portfolio -->
+      <!-- Board -->
       <v-layout>
         <v-flex xs12>
-          <PortfolioList :load-more="true"></PortfolioList>
+          <BoardList :load-more="true"></BoardList>
         </v-flex>
       </v-layout>
 
     </v-container>
-    <PortfolioWriteBtn />
+    <BoardWriteBtn />
 
   </div>
 </template>
 
 <script>
 import ImgBanner from '../components/ImgBanner'
-import PortfolioList from '../components/PortfolioList'
-import PortfolioWriteBtn from '../components/PortfolioWriteBtn.vue'
+import BoardList from '../components/BoardList'
+import BoardWriteBtn from '../components/BoardWriteBtn.vue'
 
 export default {
-	name: 'PortfolioPage',
+	name: 'BoardPage',
   components: {
 		ImgBanner,
-		PortfolioList,
-    PortfolioWriteBtn
+		BoardList,
+    BoardWriteBtn
 	},
   methods: {
     routeName(){

@@ -55,7 +55,7 @@
 <script>
 
 export default {
-	name: 'Portfolio',
+	name: 'Board',
 	props: {
 		date: {type: String},
 		title: {type: String},
