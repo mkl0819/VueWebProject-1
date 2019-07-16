@@ -29,7 +29,7 @@
             <v-toolbar-items class="hidden-xs-only" v-for="item in items">
                 <v-btn flat :to="item.link" color="white">{{item.title}}</v-btn>
             </v-toolbar-items>
-            <v-toolbar-items v-if="this.isLogin"" class="hidden-xs-only" >
+            <v-toolbar-items v-if="this.isLogin" class="hidden-xs-only" >
             <v-btn flat dark v-on:click="userSignOut"> LOGOUT</v-btn>
             </v-toolbar-items>
             <v-toolbar-items v-else class="hidden-xs-only">
@@ -95,12 +95,8 @@
                     link: '/'
                 },
                     {
-                        title: 'Portfolio',
-                        link: '/Portfolio'
-                    },
-                    {
-                        title: 'Post',
-                        link: '/Post'
+                        title: 'Board',
+                        link: '/Board'
                     },
                     {
                         title: 'Project',
