@@ -2,10 +2,11 @@
   <!-- vapp -->
   <v-app>
     <!-- vcontent -->
-    <v-content style=" padding-right: 0px;background-color:#E8EBD5">
+    <v-content
+        style="padding-right: 0px;">
       <Header />
       <!-- router -->
-      <router-view/>
+      <router-view class="main"/>
       <!-- scroll -->
     </v-content>
     <scroll />
@@ -54,4 +55,5 @@ export default {
   height: 100%;
   width: 100%;
 }
+
 </style>

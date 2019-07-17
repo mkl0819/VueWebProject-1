@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <v-toolbar fixed color='#522A83'>
+        <v-toolbar fixed color='black' style="border: 5px solid #522A83">
             <v-toolbar-title>
                 <!-- logo -->
                 <router-link to="/" style="text-decoration:none; color:black">
