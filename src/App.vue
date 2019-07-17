@@ -19,7 +19,6 @@ import Footer from './components/Footer.vue'
 import store from './store'
 import scroll from './components/Scroll.vue'
 import Translate from './components/Translate.vue'
-require('./interstella.css');
 
 export default {
   name: 'App',

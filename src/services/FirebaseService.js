@@ -53,22 +53,15 @@ export default {
     })
   },
   updateBoardViewCount(doc_id){
-    console.log(doc_id);
-    let ref = firestore.collection(BOARDS).where('doc_id','==',doc_id).get();
-    let currentUserRef = firestore.collection('users').doc('aa@aa.com').get();
-    console.log(ref);
-    console.log(currentUserRef);
-
-    ref.then(()=>{
-        boardViewCount:firebase.firestore.FieldValue.increment(1)
-    });
-
-    // ref.update({
-    //   boardViewCount:firebase.firestore.FieldValue.increment(1)
-    // })
-    // .update({
-    //   boardViewCount:firebase.firestore.FieldValue.increment(1)
-    // })
+    firestore.collection(BOARDS).where('doc_id','==',doc_id)
+    .get()
+    .then(function(querySnapshot){
+      querySnapshot.forEach(function(doc){
+        firestore.collection(BOARDS).doc(doc.id).update({
+          boardViewCount:firebase.firestore.FieldValue.increment(1)
+        });
+      });
+    })
   },
   getImgUrl(pagename) {
     const imgCollection = firestore.collection(IMGBANNER)

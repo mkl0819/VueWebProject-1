@@ -21,7 +21,7 @@
       slot-scope="{ hover }"
       :class="`elevation-${hover ? 12 : 2}`"
       class="mx-auto card-item"
-      @click="hihi"
+      @click="updateBoardViewCountMethod"
       >
         <v-img :src="imgSrc" height="200px">
         </v-img>
@@ -29,6 +29,9 @@
           <div>
             <div class="headline">{{title}}</div>
             <span class="grey--text body-txt">{{body}}</span>
+            <v-spacer></v-spacer>
+            <v-icon small>fas fa-eye</v-icon>
+            <span class="grey--text ml-2">{{boardViewCount}}</span>
           </div>
         </v-card-title>
       </v-card>
@@ -43,6 +46,7 @@
         <div>
           <div class="headline">{{title}}</div>
           <span class="grey--text" >{{body}}</span>
+
         </div>
       </v-card-title>
     </v-card>
@@ -63,7 +67,8 @@ export default {
 		title: {type: String},
 		body: {type: String},
 		imgSrc: {type: String},
-    doc_id: {type:String}
+    doc_id: {type:String},
+    boardViewCount: {type:Number}
 	},
 	data() {
 		return {
@@ -71,8 +76,7 @@ export default {
 		}
 	},
   methods:{
-    hihi(){
-      console.log("hello hihi method");
+    updateBoardViewCountMethod(){
       FirebaseService.updateBoardViewCount(this.doc_id);
     }
   }
