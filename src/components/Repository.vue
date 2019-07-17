@@ -10,18 +10,7 @@
 
     <v-card width="80%" style="margin:auto">
       <div class="hidden-xs-only mx-auto text-xs-center"  dark  sm-12>
-        <v-sheet color="#fff" >
-          <v-sparkline
-                :value="modifyValue()"
-                line-width="1"
-                smooth
-                color="#AA00FF"
-                stroke-linecap="round"
-                :labels = 'labels'
-                label-size="3"
-                padding-bottom="36">
-          </v-sparkline>
-        </v-sheet>
+        <canvas :id="repos.path_with_namespace" height="80"></canvas>
       </div>
     </v-card>
 
@@ -57,6 +46,7 @@
 
 <script>
 import GitlabService from '@/services/GitlabService'
+import Chart from 'chart.js';
 
 export default {
   name: 'Repository',
@@ -73,16 +63,40 @@ export default {
       comlist: false,
       stats: {},
       commits: [],
-      labels: [ '1월', '2월', '3월', '4월', '5월', '6월',
-                '7월', '8월', '9월', '10월', '11월', '12월', ]
+      commitdata: [0, 0, 0, 0, 0, 0, 0],
+      labels: [ '1월', '2월', '3월', '4월', '5월', '6월', '7월' ]
     }
   },
   mounted() {
+    var commitChart = document.getElementById(this.repos.path_with_namespace);
+    var myChart = new Chart(commitChart, {
+    type: 'line',
+    data: {
+        labels: this.labels,
+        datasets: [{
+            label: this.repos.namespace.name,
+            data: this.commitdata,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
     this.drawStatGraph()
   },
   methods: {
     async drawStatGraph() {
       this.commits = await GitlabService.getCommits(this.repos.id, this.token);
+      console.log(this.commits.data);
       this.modifyValue();
     },
     modifyValue() {
@@ -90,9 +104,10 @@ export default {
       // }
       for (var i in this.commits.data) {
         let date = new Date(this.commits.data[i].committed_date);
-        value[date.getMonth()] += 1;
+        this.commitdata[date.getMonth()] += 1;
       }
-      return value;
+      console.log(this.commitdata);
+      // return value;
     }
   },
   components: {}
