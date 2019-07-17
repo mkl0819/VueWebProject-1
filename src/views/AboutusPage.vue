@@ -1,12 +1,57 @@
 <template>
-  <div>
-    <ImgBanner :pagename="routeName()">
-      <div style="line-height:1.2em; font-size:10vw; font-family: Aladdin;" slot="text">About Us</div>
-    </ImgBanner>
-    <v-container>
+<div>
+  <ImgBanner :pagename="routeName()">
+    <div style="line-height:1.2em; font-size:10vw; font-family: Aladdin;" slot="text">About Us</div>
+  </ImgBanner>
+  <v-container>
 
-      <!-- Post -->
-      <v-layout my-5>
+    <v-layout my-5>
+      <v-flex xs12>
+        <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
+
+        <v-layout wrap>
+          <v-flex v-for="team in teams" xs12 sm6 md3 pa-2>
+            <v-hover>
+            <v-card class="namecard"
+                    slot-scope="{ hover }"
+                    :class="`elevation-${hover ? 12 : 2}`"
+                    @click="showRepo(team.userName)">
+              <v-layout pa-2>
+                <v-flex xs4>
+                  <v-avatar size="100%" color="lime lighten-4">
+                    <img :src="team.image">
+                  </v-avatar>
+                </v-flex>
+                <v-flex xs8>
+                  <v-card-title primary-title>
+                    <div>
+                      <div class="headline">{{team.name}} ({{team.age}})</div>
+                      <div>{{team.description}}</div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+              </v-layout>
+            </v-card>
+            </v-hover>
+          </v-flex>
+        </v-layout>
+
+        <v-flex v-for="team in teams" xs12 >
+          <v-layout xs12 :id="team.userName" style="display:none">
+            <RepositoryList
+                :token="team.token"
+                :userName="team.userName"
+            ></RepositoryList>
+          </v-layout>
+        </v-flex>
+
+      </v-flex>
+    </v-layout>
+
+
+
+    <!-- Post -->
+    <!-- <v-layout my-5>
         <v-flex xs12>
           <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
           <v-card>
@@ -46,10 +91,10 @@
             </v-container>
           </v-card>
         </v-flex>
-      </v-layout>
+      </v-layout> -->
 
-    </v-container>
-  </div>
+  </v-container>
+</div>
 </template>
 
 <script>
@@ -63,13 +108,16 @@ export default {
   name: 'AboutusPage',
   data() {
     return {
-      teams: [
-        {
+      token: '',
+      userName: '',
+      current: '',
+      teams: [{
           name: '이민경',
           age: 26,
           description: '야오밍입니다.',
           url: 'https://lab.ssafy.com/mkl0819',
-          image: require('@/assets/ming.png'),
+          image: require('@/assets/mk.png'),
+          // image: "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairBob&accessoriesType=Round&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtCrewNeck&clotheColor=Heather&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light",
           token: 'YwemDXZ5dD-Hxgx-dj5o',
           key: false,
           userName: 'mkl0819'
@@ -79,17 +127,19 @@ export default {
           age: 28,
           description: '학벌 깡패입니다.',
           url: 'https://lab.ssafy.com/leesangju92',
-          image: require('@/assets/sang.png'),
+          image: require('@/assets/sangju.png'),
+          // image: 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Blue03&eyeType=Surprised&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light',
           token: 'XLZHQWzDiR5vY3px3oWu',
           key: false,
-          userName: 'mkl0819'
+          userName: 'leesangju92'
         },
         {
           name: '이호빈',
           age: 27,
           description: '그냥 깡패입니다.',
           url: 'https://lab.ssafy.com/aegis1920',
-          image: require('@/assets/leehobin.jpg'),
+          image: require('@/assets/hobin.png'),
+          // image: 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Round&hairColor=Black&facialHairType=BeardLight&facialHairColor=Black&clotheType=Hoodie&clotheColor=Gray02&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Light',
           token: '6izgztskLYEhJ__s4Jim',
           key: false,
           userName: 'aegis1920'
@@ -99,7 +149,8 @@ export default {
           age: 27,
           description: '전의환 입니다.',
           url: 'https://lab.ssafy.com/jeon',
-          image: require('@/assets/profile.png'),
+          image: require('@/assets/jeon.png'),
+          // image: 'https://avataaars.io/?avatarStyle=Transparent&topType=Eyepatch&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=GraphicShirt&clotheColor=Pink&graphicType=SkullOutline&eyeType=Surprised&eyebrowType=RaisedExcitedNatural&mouthType=Serious&skinColor=Tanned',
           token: 'nxzw23Tzc1aFThgMNEvo',
           key: false,
           userName: 'jeon'
@@ -109,13 +160,27 @@ export default {
     }
   },
   components: {
-		ImgBanner,
-		RepositoryList
-	},
+    ImgBanner,
+    RepositoryList
+  },
   methods: {
-    routeName(){
+    routeName() {
       return this.$route.name
+    },
+    showRepo(userName){
+      if(this.current!=''){
+        document.getElementById(this.current).style.display = 'none';
+      }
+      document.getElementById(userName).style.display = 'block';
+      this.current = userName
     }
   }
 }
 </script>
+
+<style>
+.namecard {
+  cursor: pointer;
+   border-radius:20px;
+}
+</style>

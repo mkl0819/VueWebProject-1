@@ -5,6 +5,7 @@ const BASE_URL = 'https://lab.ssafy.com/api/v4';
 
 export default {
 	getRepos(userName, privateToken) {
+		console.log(userName, privateToken);
 		return Api(BASE_URL).get(`/users/${userName}/projects?private_token=` + privateToken);
 	},
 	getCommits(fullName, privateToken) {
