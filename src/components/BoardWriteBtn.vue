@@ -14,10 +14,10 @@
         <v-btn icon dark @click="close">
           <v-icon>close</v-icon>
         </v-btn>
-        <v-toolbar-title>Portfolio Write</v-toolbar-title>
+        <v-toolbar-title>Board Write</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-          <v-btn dark flat @click="postPortfolio()">SAVE</v-btn>
+          <v-btn dark flat @click="postBoard()">SAVE</v-btn>
         </v-toolbar-items>
       </v-toolbar>
 
@@ -93,7 +93,9 @@ export default {
         return true;
       }
     },
-    postPortfolio() {
+    postBoard() {
+      var imagefiles = document.getElementsByClassName('imagefile');
+      this.img = imagefiles[0].src;
       if(this.title==''){
         this.errorMsg = '제목을 입력해주세요.';
         this.alert = true;
@@ -109,11 +111,10 @@ export default {
         this.alert = true;
         return;
       }
-      var imagefiles = document.getElementsByClassName('imagefile');
-      this.img = imagefiles[0].src;
-      FirebaseService.postPortfolio(this.title, this.body, this.img)
+
+      FirebaseService.postBoard(this.title, this.body, this.img)
       this.dialog = false;
-      document.location.href = '/Portfolio';
+      document.location.href = '/Board';
     },
     close(){
       var imagefiles = document.getElementsByClassName('imagefile');

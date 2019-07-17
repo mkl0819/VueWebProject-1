@@ -95,12 +95,8 @@
                     link: '/'
                 },
                     {
-                        title: 'Portfolio',
-                        link: '/Portfolio'
-                    },
-                    {
-                        title: 'Post',
-                        link: '/Post'
+                        title: 'Board',
+                        link: '/Board'
                     },
                     {
                         title: 'AboutUs',

@@ -3,7 +3,7 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 const POSTS = 'posts'
-const PORTFOLIOS = 'portfolios'
+const BOARDS = 'boards'
 const IMGBANNER = 'imgbanner'
 
 // Setup Firebase
@@ -49,8 +49,8 @@ export default {
       created_at: firebase.firestore.FieldValue.serverTimestamp()
     })
   },
-  getPortfolios() {
-    const postsCollection = firestore.collection(PORTFOLIOS)
+  getBoards() {
+    const postsCollection = firestore.collection(BOARDS)
     return postsCollection
       .orderBy('created_at', 'desc')
       .get()
@@ -62,8 +62,8 @@ export default {
         })
       })
   },
-  postPortfolio(title, body, img) {
-    return firestore.collection(PORTFOLIOS).add({
+  postBoard(title, body, img) {
+    return firestore.collection(BOARDS).add({
       title,
       body,
       img,
