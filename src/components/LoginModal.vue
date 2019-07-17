@@ -151,6 +151,8 @@
 <script>
     import FirebaseService from '@/services/FirebaseService'
     import firebase from "firebase"
+    import Swal from 'sweetalert2'
+
     const firestore = firebase.firestore();
 
     export default {
@@ -184,16 +186,27 @@
         methods: {
             async emailLogin() {
                 await firebase.auth().signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
-                    // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    alert(errorMessage)
-                    // ...
+                    Swal.fire({
+                        type: 'error',
+                        position: 'center',
+                        title: errorCode,
+                        text: error.message,
+                        showConfirmButton: false,
+                        timer: 3000,
+                    })
                 });
-                console.log("success");
-                console.log(firebase.auth());
+                let username = firebase.auth().currentUser.email.split("@",1)[0]
                 this.dialog = false;
-                window.location.href = "/"
+                Swal.fire({
+                    type: 'success',
+                    position: 'center',
+                    title: 'Welcome, ' + username,
+                    text: "It's good to see you again",
+                    showConfirmButton: false,
+                    timer: 1500,
+                })
             },
             async userSignUp() {
                 let email_id = this.email
@@ -209,71 +222,86 @@
                             repository: 0,
                             login: 0
                         });
-                        console.log("signup set data success!");
+                        let username = email_id.split("@",1)[0]
+                        Swal.fire({
+                            type: 'success',
+                            position: 'center',
+                            title: 'Welcome, ' + username,
+                            text: "Thank you for signing up for our website",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        })
                     })
                     .catch(function(error) {
-                        // Handle Errors here.
                         var errorCode = error.code;
                         var errorMessage = error.message;
-                        console.log(errorCode);
-                        console.log(errorMessage);
-                        // ...
+                        Swal.fire({
+                            type: 'error',
+                            position: 'center',
+                            title: errorCode,
+                            text: error.message,
+                            showConfirmButton: false,
+                            timer: 3000,
+                        })
                     });
                 // console.log("signup!");
                 this.dialog2 = false;
-                window.location.href = "/"
-            },
-            async userSignOut() {
-                await firebase.auth().signOut().then(function() {
-                    // Sign-out successful.
-                }).catch(function(error) {
-                    // An error happened.
-                });
-                window.location.href = "/"
             },
             async loginWithGoogle() {
                 var provider = new firebase.auth.GoogleAuthProvider();
                 await firebase.auth().signInWithPopup(provider).then(function (result) {
-                    // This gives you a Google Access Token. You can use it to access the Google API.
                     var token = result.credential.accessToken;
-                    // The signed-in user info.
                     var user = result.user;
-                    console.log(token)
-                    console.log(user)
-                    // ...
+                    Swal.fire({
+                        type: 'success',
+                        position: 'center',
+                        title: 'Welcome, ' + user.displayName,
+                        text: "It's good to see you again",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    })
                 }).catch(function (error) {
-                    // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    // The email of the user's account used.
                     var email = error.email;
-                    // The firebase.auth.AuthCredential type that was used.
                     var credential = error.credential;
-                    console.log(this.email)
-                    // ...
+                    Swal.fire({
+                        type: 'error',
+                        position: 'center',
+                        title: errorCode,
+                        text: error.message,
+                        showConfirmButton: false,
+                        timer: 3000,
+                    })
                 });
-                window.location.href = "/"
             },
             async facebookLogin() {
                 var provider = new firebase.auth.FacebookAuthProvider();
                 await firebase.auth().signInWithPopup(provider).then(function (result) {
-                    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
                     var token = result.credential.accessToken;
-                    // The signed-in user info.
                     var user = result.user;
-                    // ...
+                    Swal.fire({
+                        type: 'success',
+                        position: 'center',
+                        title: 'Welcome, ' + user.displayName,
+                        text: "It's good to see you again",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    })
                 }).catch(function (error) {
-                    // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
-                    // The email of the user's account used.
                     var email = error.email;
-                    // The firebase.auth.AuthCredential type that was used.
                     var credential = error.credential;
-                    alert(errorMessage)
-                    // ...
+                    Swal.fire({
+                        type: 'error',
+                        position: 'center',
+                        title: errorCode,
+                        text: error.message,
+                        showConfirmButton: false,
+                        timer: 3000,
+                    })
                 });
-                window.location.href = "/"
             },
         },
         mounted() {

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from './views/HomePage.vue'
 import BoardPage from './views/BoardPage.vue'
-import LoginPage from './views/LoginPage.vue'
 import AboutusPage from './views/AboutusPage.vue'
 import FirebaseService from './services/FirebaseService'
 
@@ -25,15 +24,6 @@ export default new Router({
 			path: '/board',
 			name: 'board',
 			component: BoardPage,
-      beforeEnter(to, from, next){
-        FirebaseService.updateViewPageCount(to.name);
-        next();
-      }
-		},
-		{
-			path: '/login',
-			name: 'login',
-			component: LoginPage,
       beforeEnter(to, from, next){
         FirebaseService.updateViewPageCount(to.name);
         next();

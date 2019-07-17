@@ -12,7 +12,7 @@
 </style>
 <template>
 <v-layout>
-  <v-dialog >
+  <v-dialog>
       <!-- <v-dialog v-model="dialog"> -->
     <template v-slot:activator="{ on }">
       <!-- <v-btn color="primary" dark >Open Dialog</v-btn> -->
@@ -21,6 +21,7 @@
       slot-scope="{ hover }"
       :class="`elevation-${hover ? 12 : 2}`"
       class="mx-auto card-item"
+      @click="updateBoardViewCountMethod"
       >
         <v-img :src="imgSrc" height="200px">
         </v-img>
@@ -28,6 +29,9 @@
           <div>
             <div class="headline">{{title}}</div>
             <span class="grey--text body-txt">{{body}}</span>
+            <v-spacer></v-spacer>
+            <v-icon small>fas fa-eye</v-icon>
+            <span class="grey--text ml-2">{{boardViewCount}}</span>
           </div>
         </v-card-title>
       </v-card>
@@ -42,6 +46,7 @@
         <div>
           <div class="headline">{{title}}</div>
           <span class="grey--text" >{{body}}</span>
+
         </div>
       </v-card-title>
     </v-card>
@@ -53,6 +58,7 @@
 </template>
 
 <script>
+import FirebaseService from '@/services/FirebaseService'
 
 export default {
 	name: 'Board',
@@ -60,12 +66,19 @@ export default {
 		date: {type: String},
 		title: {type: String},
 		body: {type: String},
-		imgSrc: {type: String}
+		imgSrc: {type: String},
+    doc_id: {type:String},
+    boardViewCount: {type:Number}
 	},
 	data() {
 		return {
 			dialog: false
 		}
-	}
+	},
+  methods:{
+    updateBoardViewCountMethod(){
+      FirebaseService.updateBoardViewCount(this.doc_id);
+    }
+  }
 }
 </script>

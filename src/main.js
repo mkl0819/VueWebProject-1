@@ -27,20 +27,21 @@ Vue.use(Vuetify, {
 
 Vue.use(VueSimplemde)
 
-firebase.auth().onAuthStateChanged(function(user) {
-	if (user) {
-		console.log("family!")
-		// User is signed in.
-	} else {
-		console.log("guest!")
-		// No user is signed in.
-	}
-});
-
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+	router,
+	store,
+	created() {
+		firebase.auth().onAuthStateChanged((user) => {
+			if (user) {
+				this.$store.state.user = user;
+				// alert(user.displayName)
+				// console.log(user)
+				this.$store.state.accessToken = user.accessToken;
+			} else {
+			}
+		})
+	},
+	render: h => h(App)
 }).$mount('#app')
 
 new Vue({
