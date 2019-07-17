@@ -41,37 +41,33 @@
       <v-layout my-5>
         <v-flex xs12>
           <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
-            <v-card  color="#BB6949">
+            <v-card flat  color="white">
               <v-container
                       fluid
                       grid-list-lg
               >
                 <v-layout row wrap>
                   <v-flex xs12 sm6 v-for="team in teams">
-                    <v-card color="#E4BD5B" class="black--text">
+                    <v-card color="white" class="black--text"
+                    style="min-width: 200px; min-height: 300px;">
+                      <Person
+                        :name="team.name"
+                        :description="team.description"
+                        :image="team.image"
+                        :url="team.url"
+                      ></Person>
                       <v-layout row>
                         <v-flex xs7>
-                          <v-card-title primary-title>
-                            <div>
-                              <div class="headline">{{team.name}}</div>
-                              <div>{{team.description}}</div>
-                              <div>({{team.age}})</div>
-                            </div>
-                          </v-card-title>
+
                         </v-flex>
-                        <v-flex xs5>
+                        <!--<v-flex xs5>
                           <v-img
                                   :src="team.image"
                                   height="125px"
                                   contain
                           ></v-img>
-                        </v-flex>
+                        </v-flex>-->
                       </v-layout>
-                      <v-divider light></v-divider>
-                      <v-card-actions class="pa-3">
-                        <v-btn flat :href="team.url" target="_blank">GITLAB 가기</v-btn>
-                        <v-spacer></v-spacer>
-                      </v-card-actions>
                     </v-card>
                   </v-flex>
                 </v-layout>
@@ -90,6 +86,7 @@ import BoardList from '../components/BoardList'
 import RepositoryList from '../components/RepositoryList'
 import Footer from '../components/Footer'
 import FirebaseService from '@/services/FirebaseService'
+import Person from'../components/Person'
 
 export default {
 	name: 'HomePage',
@@ -101,8 +98,8 @@ export default {
           age: 26,
           description: '야오밍입니다.',
           url: 'https://lab.ssafy.com/mkl0819',
-          // image: require('@/assets/ming.png'),
-          image: "https://avataaars.io/?avatarStyle=Circle&topType=LongHairBob&accessoriesType=Round&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtCrewNeck&clotheColor=Heather&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light",
+          image: require('@/assets/ming.png'),
+          //image: "https://avataaars.io/?avatarStyle=Circle&topType=LongHairBob&accessoriesType=Round&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtCrewNeck&clotheColor=Heather&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light",
           token: 'YwemDXZ5dD-Hxgx-dj5o',
           key: false,
           userName: 'mkl0819'
@@ -112,8 +109,8 @@ export default {
           age: 28,
           description: '학벌 깡패입니다.',
           url: 'https://lab.ssafy.com/leesangju92',
-          // image: require('@/assets/sang.png'),
-          image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
+          image: require('@/assets/sang.png'),
+          //image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
           token: 'XLZHQWzDiR5vY3px3oWu',
           key: false,
           userName: 'mkl0819'
@@ -123,8 +120,8 @@ export default {
           age: 27,
           description: '그냥 깡패입니다.',
           url: 'https://lab.ssafy.com/aegis1920',
-          // image: require('@/assets/leehobin.jpg'),
-          image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
+          image: require('@/assets/leehobin.jpg'),
+          //image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
           token: '6izgztskLYEhJ__s4Jim',
           key: false,
           userName: 'aegis1920'
@@ -134,8 +131,8 @@ export default {
           age: 27,
           description: '전의환 입니다.',
           url: 'https://lab.ssafy.com/jeon',
-          // image: require('@/assets/profile.png'),
-          image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
+          image: require('@/assets/profile.png'),
+          //image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
           token: 'nxzw23Tzc1aFThgMNEvo',
           key: false,
           userName: 'jeon'
@@ -146,7 +143,8 @@ export default {
 	components: {
 		ImgBanner,
 		BoardList,
-		RepositoryList
+		RepositoryList,
+        Person
 	},
 	methods: {
 		getImgUrl(img) {

@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <v-toolbar fixed color='#522A83'>
+        <v-toolbar fixed color='black' style="border: 5px solid #522A83">
             <v-toolbar-title>
                 <!-- logo -->
                 <router-link to="/" style="text-decoration:none; color:black">
@@ -78,6 +78,8 @@
     import firebase from "firebase"
     import LoginModal from './LoginModal.vue'
     import LoginModal2 from './LoginModal2.vue'
+    import Swal from 'sweetalert2'
+    let timerInterval
 
     export default {
         name: 'Header',
@@ -136,12 +138,41 @@
                 }
             },
             async userSignOut() {
-                await firebase.auth().signOut().then(function() {
-                    // Sign-out successful.
-                }).catch(function(error) {
-                    // An error happened.
-                });
-                window.location.href = "/"
+                await Swal.fire({
+                    title: 'Are you sure you want to LOG OUT?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    cancelButtonColor: '#d33',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Confirm'
+                }).then((result) => {
+                    if (result.value) {
+                        firebase.auth().signOut().then(function() {
+                            Swal.fire(
+                                {
+                                    type: 'success',
+                                    position: 'center',
+                                    title: 'LOG Out!',
+                                    text: 'Please visit our website again',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                }
+                            )
+                        }).catch(function(error) {
+                            var errorCode = error.code;
+                            var errorMessage = error.message;
+                            Swal.fire({
+                                type: 'error',
+                                position: 'center',
+                                title: errorCode,
+                                text: error.message,
+                                showConfirmButton: false,
+                                timer: 3000,
+                            })
+                        });
+                    }
+                })
             },
         },
         created() {
