@@ -40,7 +40,7 @@
       <!-- Github -->
       <v-layout my-5>
         <v-flex xs12>
-          <h2 class="display-1 font-weight-medium my-5 text-xs-center">Project</h2>
+          <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
             <v-card  color="#BB6949">
               <v-container
                       fluid
@@ -96,38 +96,50 @@ export default {
     data() {
 	  return {
 	    teams: [
-          {
-            name: '이민경',
-            age: 26,
-            description: '부산 깡패입니다.',
-            url: 'https://lab.ssafy.com/mkl0819',
-            image: require('@/assets/ming.png'),
-            token: 'YwemDXZ5dD-Hxgx-dj5o',
-          },
-          {
-            name: '이상주',
-            age: 28,
-            description: '학벌 깡패입니다.',
-            url: 'https://lab.ssafy.com/leesangju92',
-            image: require('@/assets/sang.png'),
-            token: 'XLZHQWzDiR5vY3px3oWu',
-          },
-          {
-            name: '이호빈',
-            age: 27,
-            description: '그냥 깡패입니다.',
-            url: 'https://lab.ssafy.com/aegis1920',
-            image: require('@/assets/leehobin.jpg'),
-            token: '6izgztskLYEhJ__s4Jim',
-          },
-          {
-            name: '전의환',
-            age: 27,
-            description: '롤 깡패입니다.',
-            url: 'https://lab.ssafy.com/jeon',
-            image: require('@/assets/black-goat.jpg'),
-            token: 'nxzw23Tzc1aFThgMNEvo',
-          },
+        {
+          name: '이민경',
+          age: 26,
+          description: '야오밍입니다.',
+          url: 'https://lab.ssafy.com/mkl0819',
+          // image: require('@/assets/ming.png'),
+          image: "https://avataaars.io/?avatarStyle=Circle&topType=LongHairBob&accessoriesType=Round&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtCrewNeck&clotheColor=Heather&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light",
+          token: 'YwemDXZ5dD-Hxgx-dj5o',
+          key: false,
+          userName: 'mkl0819'
+        },
+        {
+          name: '이상주',
+          age: 28,
+          description: '학벌 깡패입니다.',
+          url: 'https://lab.ssafy.com/leesangju92',
+          // image: require('@/assets/sang.png'),
+          image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
+          token: 'XLZHQWzDiR5vY3px3oWu',
+          key: false,
+          userName: 'mkl0819'
+        },
+        {
+          name: '이호빈',
+          age: 27,
+          description: '그냥 깡패입니다.',
+          url: 'https://lab.ssafy.com/aegis1920',
+          // image: require('@/assets/leehobin.jpg'),
+          image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
+          token: '6izgztskLYEhJ__s4Jim',
+          key: false,
+          userName: 'aegis1920'
+        },
+        {
+          name: '전의환',
+          age: 27,
+          description: '전의환 입니다.',
+          url: 'https://lab.ssafy.com/jeon',
+          // image: require('@/assets/profile.png'),
+          image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
+          token: 'nxzw23Tzc1aFThgMNEvo',
+          key: false,
+          userName: 'jeon'
+        },
         ]
       }
     },
