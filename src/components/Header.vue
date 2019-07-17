@@ -99,8 +99,8 @@
                         link: '/Board'
                     },
                     {
-                        title: 'AboutUs',
-                        link: '/AboutUs'
+                        title: 'Aboutsus',
+                        link: '/aboutus'
                     },
                     // {
                     //   title: 'Login',
