@@ -29,26 +29,6 @@ firebase.initializeApp(config);
 const firestore = firebase.firestore();
 
 export default {
-  getPosts() {
-    const postsCollection = firestore.collection(POSTS)
-    return postsCollection
-      .orderBy('created_at', 'desc')
-      .get()
-      .then((docSnapshots) => {
-        return docSnapshots.docs.map((doc) => {
-          let data = doc.data()
-          data.created_at = new Date(data.created_at.toDate())
-          return data
-        })
-      })
-  },
-  postPost(title, body) {
-    return firestore.collection(POSTS).add({
-      title,
-      body,
-      created_at: firebase.firestore.FieldValue.serverTimestamp()
-    })
-  },
   getBoards() {
     const postsCollection = firestore.collection(BOARDS)
     return postsCollection
@@ -64,10 +44,23 @@ export default {
   },
   postBoard(title, body, img) {
     return firestore.collection(BOARDS).add({
+      doc_id:firestore.collection(BOARDS).doc().id,
+      boardViewCount:0,
       title,
       body,
       img,
       created_at: firebase.firestore.FieldValue.serverTimestamp()
+    })
+  },
+  updateBoardViewCount(doc_id){
+    firestore.collection(BOARDS).where('doc_id','==',doc_id)
+    .get()
+    .then(function(querySnapshot){
+      querySnapshot.forEach(function(doc){
+        firestore.collection(BOARDS).doc(doc.id).update({
+          boardViewCount:firebase.firestore.FieldValue.increment(1)
+        });
+      });
     })
   },
   getImgUrl(pagename) {
