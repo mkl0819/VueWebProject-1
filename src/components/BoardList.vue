@@ -4,6 +4,7 @@
       <Board class="ma-3"
               :date="boards[i - 1].created_at.toString()"
               :title="boards[i - 1].title"
+              :doc_id="boards[i - 1].doc_id"
               :body="boards[i - 1].body"
               :imgSrc="boards[i - 1].img"
       ></Board>

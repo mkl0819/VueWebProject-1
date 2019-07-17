@@ -12,7 +12,7 @@
 </style>
 <template>
 <v-layout>
-  <v-dialog >
+  <v-dialog>
       <!-- <v-dialog v-model="dialog"> -->
     <template v-slot:activator="{ on }">
       <!-- <v-btn color="primary" dark >Open Dialog</v-btn> -->
@@ -21,6 +21,7 @@
       slot-scope="{ hover }"
       :class="`elevation-${hover ? 12 : 2}`"
       class="mx-auto card-item"
+      @click="hihi"
       >
         <v-img :src="imgSrc" height="200px">
         </v-img>
@@ -53,6 +54,7 @@
 </template>
 
 <script>
+import FirebaseService from '@/services/FirebaseService'
 
 export default {
 	name: 'Board',
@@ -60,12 +62,19 @@ export default {
 		date: {type: String},
 		title: {type: String},
 		body: {type: String},
-		imgSrc: {type: String}
+		imgSrc: {type: String},
+    doc_id: {type:String}
 	},
 	data() {
 		return {
 			dialog: false
 		}
-	}
+	},
+  methods:{
+    hihi(){
+      console.log("hello hihi method");
+      FirebaseService.updateBoardViewCount(this.doc_id);
+    }
+  }
 }
 </script>
