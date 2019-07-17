@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/487b296483.js"></script>
 <template>
     <div class="card middle">
         <div class="front">
@@ -6,19 +7,20 @@
         <div class="back">
             <div class="back-content middle">
                 <h2>{{name}}</h2>
+                <br>
                 <span>{{description}}</span>
                 <div class="sm">
-                    <a :href="url"><span><i class="fab fa-facebook-f"></i></span></a>
+                    <a :href="url"><span><i class="fab fa-github"></i></span></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
 <script>
+
     export default {
         name: "Person",
         props: {
@@ -39,6 +41,8 @@
 </script>
 
 <style scoped>
+    link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CMaterial+Icons' rel="stylesheet" type="text/css"
+
 *{
     margin: 0;
     padding: 0;
