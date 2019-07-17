@@ -1,16 +1,17 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 <template>
 <div>
   <ImgBanner :pagename="routeName()">
     <div style="line-height:1.2em; font-size:10vw; font-family: Aladdin;" slot="text">About Us</div>
   </ImgBanner>
   <v-container>
-
     <v-layout my-5>
       <v-flex xs12>
         <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
 
         <v-layout wrap>
-          <v-flex v-for="team in teams" xs12 sm6 md3 pa-2>
+          <v-flex v-for="team in teams" xs12 sm6 lg3 pa-2>
             <v-hover>
             <v-card class="namecard"
                     slot-scope="{ hover }"
@@ -102,7 +103,6 @@ import ImgBanner from '../components/ImgBanner'
 import RepositoryList from '../components/RepositoryList'
 
 import FirebaseService from '@/services/FirebaseService'
-
 
 export default {
   name: 'AboutusPage',
