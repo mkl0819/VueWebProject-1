@@ -41,7 +41,7 @@
       <v-layout my-5>
         <v-flex xs12>
           <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
-            <v-card  color="white">
+            <v-card flat  color="white">
               <v-container
                       fluid
                       grid-list-lg
