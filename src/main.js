@@ -11,7 +11,12 @@ import store from './store'
 import BrowserAlert from './components/BrowserAlert.vue'
 import firebase from "firebase"
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import './registerServiceWorker'
+
+AOS.init();
 
 Vue.config.productionTip = false
 
