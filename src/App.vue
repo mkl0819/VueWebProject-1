@@ -38,9 +38,9 @@ export default {
     Header,
     Footer,
     scroll,
-    Translate,
-
+    Translate
   },
+
   data() {
     return {
       videoUrl: require('@/assets/Space - 2381.mp4')

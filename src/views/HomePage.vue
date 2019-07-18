@@ -1,67 +1,60 @@
 <template>
-  <!-- div -->
-  <div>
-    <!-- imgbanner -->
-    <ImgBanner :pagename="routeName()">
-      <div style="line-height:1.2em; font-size:10vw; font-family: Aladdin" slot="text">Welcome To<br>Aladdin</div>
-    </ImgBanner>
-    <!-- container -->
-    <v-container>
-      <!-- About Me -->
-      <About
-      ></About>
+<!-- div -->
+<div>
+  <welcome id="intro" />
+
+  <!-- imgbanner -->
+  <ImgBanner :pagename="routeName()">
+    <div style="line-height:1.2em; font-size:10vw; font-family: Aladdin" slot="text">Welcome To<br>Aladdin</div>
+  </ImgBanner>
+  <!-- container -->
+  <v-container>
+    <!-- About Me -->
+    <About
+    ></About>
 
 
-      <!-- Board -->
-      <v-layout my-5>
-        <v-flex xs12 >
-          <router-link to="/Board" style="text-decoration:none; color:black">
+    <!-- Board -->
+    <v-layout my-5>
+      <v-flex xs12>
+        <router-link to="/Board" style="text-decoration:none; color:black">
           <h2 class="display-1 font-weight-medium my-5 text-xs-center">Board</h2>
         </router-link>
-          <BoardList></BoardList>
-        </v-flex>
-      </v-layout>
+        <BoardList></BoardList>
+      </v-flex>
+    </v-layout>
 
-      <!-- Github -->
-      <v-layout my-5>
-        <v-flex xs12>
-          <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
-            <v-card flat  color="white">
-              <v-container
-                      fluid
-                      grid-list-lg
-              >
-                <v-layout row wrap>
-                  <v-flex xs12 sm6 v-for="team in teams">
-                    <v-card color="white" class="black--text"
-                    style="min-width: 200px; min-height: 300px;">
-                      <Person
-                        :name="team.name"
-                        :description="team.description"
-                        :image="team.image"
-                        :url="team.url"
-                      ></Person>
-                      <v-layout row>
-                        <v-flex xs7>
+    <!-- Github -->
+    <v-layout my-5>
+      <v-flex xs12>
+        <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
+        <v-card flat color="white">
+          <v-container fluid grid-list-lg>
+            <v-layout row wrap>
+              <v-flex xs12 sm6 v-for="team in teams">
+                <v-card color="white" class="black--text" style="min-width: 200px; min-height: 300px;">
+                  <Person :name="team.name" :description="team.description" :image="team.image" :url="team.url"></Person>
+                  <v-layout row>
+                    <v-flex xs7>
 
-                        </v-flex>
-                        <!--<v-flex xs5>
+                    </v-flex>
+                    <!--<v-flex xs5>
                           <v-img
                                   :src="team.image"
                                   height="125px"
                                   contain
                           ></v-img>
                         </v-flex>-->
-                      </v-layout>
-                    </v-card>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </div>
+                  </v-layout>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</div>
 </template>
 
 <script>
@@ -71,15 +64,19 @@ import BoardList from '../components/BoardList'
 import RepositoryList from '../components/RepositoryList'
 import Footer from '../components/Footer'
 import FirebaseService from '@/services/FirebaseService'
+<<<<<<< HEAD
 import Person from'../components/Person'
 import About from '../components/About'
+=======
+import Person from '../components/Person'
+import welcome from '../components/welcome.vue'
+>>>>>>> 9b37089fd9dab07554163faeae901817be25a7a3
 
 export default {
-	name: 'HomePage',
-    data() {
-	  return {
-	    teams: [
-        {
+  name: 'HomePage',
+  data() {
+    return {
+      teams: [{
           name: '이민경',
           age: 26,
           description: '야오밍입니다.',
@@ -123,9 +120,21 @@ export default {
           key: false,
           userName: 'jeon'
         },
-        ]
-      }
+      ]
+    }
+  },
+  components: {
+    ImgBanner,
+    BoardList,
+    RepositoryList,
+    Person,
+    welcome
+  },
+  methods: {
+    getImgUrl(img) {
+      return require('../assets/' + img)
     },
+<<<<<<< HEAD
 	components: {
 		ImgBanner,
 		BoardList,
@@ -138,9 +147,28 @@ export default {
 			return require('../assets/' + img)
 		},
     routeName(){
+=======
+    routeName() {
+>>>>>>> 9b37089fd9dab07554163faeae901817be25a7a3
       return this.$route.name
+    },
+    preLoader() {
+      setTimeout(function() {
+        var intro = document.getElementById('intro');
+        intro.style.display = 'none';
+      }, 7000);
     }
-	},
+  },
+  mounted() {
+    console.log(this.$store.state.intro)
+    if (!this.$store.state.intro) {
+      this.$store.state.intro = true;
+      this.preLoader();
+    } else {
+      var intro = document.getElementById('intro');
+      intro.style.display = 'none';
+    }
+  }
 }
 </script>
 
