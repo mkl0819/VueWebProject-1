@@ -1,82 +1,75 @@
 <template>
-  <!-- div -->
-  <div>
-    <!-- imgbanner -->
-    <ImgBanner :pagename="routeName()">
-      <div style="line-height:1.2em; font-size:10vw; font-family: Aladdin" slot="text">Welcome To<br>Aladdin</div>
-    </ImgBanner>
-    <!-- container -->
-    <v-container>
-      <!-- About Me -->
-      <v-layout my-5>
-        <v-flex xs12 sm6>
+<!-- div -->
+<div>
+  <welcome id="intro" />
 
-          <router-link to="/" style="text-decoration:none; color:black">
-            <h2 class="display-1 font-weight-medium mb-3 text-xs-center text-sm-right mr-4">About Me</h2>
-          </router-link>
+  <!-- imgbanner -->
+  <ImgBanner :pagename="routeName()">
+    <div style="line-height:1.2em; font-size:10vw; font-family: Aladdin" slot="text">Welcome To<br>Aladdin</div>
+  </ImgBanner>
+  <!-- container -->
+  <v-container>
+    <!-- About Me -->
+    <v-layout my-5>
+      <v-flex xs12 sm6>
 
-          <p class="mr-4 my-5 text-xs-center text-sm-right grey--text">
-            안녕하세요.<br>
-            아주 작은 기적을 일으키는 밍입니다.<br>
-            저는 개발을 해보겠습니다.<br>
-            여러분들이 많이 도와주세요...<br>
-          </p>
-        </v-flex>
-        <v-flex  sm6>
-          <v-img class="aboutImg" :src="getImgUrl('ming.png')" aspect-ratio="1.5"/>
-        </v-flex>
-      </v-layout>
+        <router-link to="/" style="text-decoration:none; color:black">
+          <h2 class="display-1 font-weight-medium mb-3 text-xs-center text-sm-right mr-4">About Me</h2>
+        </router-link>
 
-      <!-- Board -->
-      <v-layout my-5>
-        <v-flex xs12 >
-          <router-link to="/Board" style="text-decoration:none; color:black">
+        <p class="mr-4 my-5 text-xs-center text-sm-right grey--text">
+          안녕하세요.<br>
+          아주 작은 기적을 일으키는 밍입니다.<br>
+          저는 개발을 해보겠습니다.<br>
+          여러분들이 많이 도와주세요...<br>
+        </p>
+      </v-flex>
+      <v-flex sm6>
+        <v-img class="aboutImg" :src="getImgUrl('ming.png')" aspect-ratio="1.5" />
+      </v-flex>
+    </v-layout>
+
+    <!-- Board -->
+    <v-layout my-5>
+      <v-flex xs12>
+        <router-link to="/Board" style="text-decoration:none; color:black">
           <h2 class="display-1 font-weight-medium my-5 text-xs-center">Board</h2>
         </router-link>
-          <BoardList></BoardList>
-        </v-flex>
-      </v-layout>
+        <BoardList></BoardList>
+      </v-flex>
+    </v-layout>
 
-      <!-- Github -->
-      <v-layout my-5>
-        <v-flex xs12>
-          <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
-            <v-card flat  color="white">
-              <v-container
-                      fluid
-                      grid-list-lg
-              >
-                <v-layout row wrap>
-                  <v-flex xs12 sm6 v-for="team in teams">
-                    <v-card color="white" class="black--text"
-                    style="min-width: 200px; min-height: 300px;">
-                      <Person
-                        :name="team.name"
-                        :description="team.description"
-                        :image="team.image"
-                        :url="team.url"
-                      ></Person>
-                      <v-layout row>
-                        <v-flex xs7>
+    <!-- Github -->
+    <v-layout my-5>
+      <v-flex xs12>
+        <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
+        <v-card flat color="white">
+          <v-container fluid grid-list-lg>
+            <v-layout row wrap>
+              <v-flex xs12 sm6 v-for="team in teams">
+                <v-card color="white" class="black--text" style="min-width: 200px; min-height: 300px;">
+                  <Person :name="team.name" :description="team.description" :image="team.image" :url="team.url"></Person>
+                  <v-layout row>
+                    <v-flex xs7>
 
-                        </v-flex>
-                        <!--<v-flex xs5>
+                    </v-flex>
+                    <!--<v-flex xs5>
                           <v-img
                                   :src="team.image"
                                   height="125px"
                                   contain
                           ></v-img>
                         </v-flex>-->
-                      </v-layout>
-                    </v-card>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </div>
+                  </v-layout>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</div>
 </template>
 
 <script>
@@ -86,14 +79,14 @@ import BoardList from '../components/BoardList'
 import RepositoryList from '../components/RepositoryList'
 import Footer from '../components/Footer'
 import FirebaseService from '@/services/FirebaseService'
-import Person from'../components/Person'
+import Person from '../components/Person'
+import welcome from '../components/welcome.vue'
 
 export default {
-	name: 'HomePage',
-    data() {
-	  return {
-	    teams: [
-        {
+  name: 'HomePage',
+  data() {
+    return {
+      teams: [{
           name: '이민경',
           age: 26,
           description: '야오밍입니다.',
@@ -137,23 +130,40 @@ export default {
           key: false,
           userName: 'jeon'
         },
-        ]
-      }
-    },
-	components: {
-		ImgBanner,
-		BoardList,
-		RepositoryList,
-        Person
-	},
-	methods: {
-		getImgUrl(img) {
-			return require('../assets/' + img)
-		},
-    routeName(){
-      return this.$route.name
+      ]
     }
-	},
+  },
+  components: {
+    ImgBanner,
+    BoardList,
+    RepositoryList,
+    Person,
+    welcome
+  },
+  methods: {
+    getImgUrl(img) {
+      return require('../assets/' + img)
+    },
+    routeName() {
+      return this.$route.name
+    },
+    preLoader() {
+      setTimeout(function() {
+        var intro = document.getElementById('intro');
+        intro.style.display = 'none';
+      }, 7000);
+    }
+  },
+  mounted() {
+    console.log(this.$store.state.intro)
+    if (!this.$store.state.intro) {
+      this.$store.state.intro = true;
+      this.preLoader();
+    } else {
+      var intro = document.getElementById('intro');
+      intro.style.display = 'none';
+    }
+  }
 }
 </script>
 

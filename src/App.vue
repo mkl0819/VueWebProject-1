@@ -28,12 +28,8 @@ export default {
     Header,
     Footer,
     scroll,
-    Translate,
-
+    Translate
   },
-  methods: {
-
-  }
 }
 </script>
 
