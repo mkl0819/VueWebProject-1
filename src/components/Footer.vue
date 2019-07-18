@@ -1,47 +1,52 @@
 <template>
   <v-footer
-
-    height="auto"
+          height="auto"
   >
     <v-card
-      flat
-      tile
-      class="indigo lighten-1 white--text text-xs-center"
+            class="flex"
+            flat
+            flex
     >
-      <v-card-text color="#A2052C">
+      <v-card-title class="py-1">
+        <v-spacer></v-spacer>
+        <Weather></Weather>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <Translate></Translate>
+        <v-spacer></v-spacer>
+      </v-card-title>
 
-        <v-btn
-          v-for="icon in icons"
-          :key="icon.icon"
-          class="mx-3 white--text"
-          :href="icon.link"
-          icon
-        >
-        <v-tooltip top>
-          <template v-slot:activator="{ on }">
-            <v-icon v-on="on" size="24px">{{ icon.icon }}</v-icon>
-          </template>
-          <span>{{icon.name}}으로 이동해보아요!
+      <v-card-actions class="grey darken-3 justify-space-between px-5">
+        <v-spacer></v-spacer>
+        <v-card-text style="width: auto; color: white;" class="pa-0 ml-3">&copy; 2019 — <strong> Ming</strong>
+        </v-card-text>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
+        <v-card-text style="width: auto;" class="pa-0 mr-3">
+          <v-btn
+                  v-for="icon in icons"
+                  :key="icon.icon"
+                  class="mx-2 white--text"
+                  :href="icon.link"
+                  icon
+          >
+            <v-tooltip top>
+              <template v-slot:activator="{ on }">
+                <v-icon v-on="on" size="24px">{{ icon.icon }}</v-icon>
+              </template>
+              <span>{{icon.name}}으로 이동해보아요!
             <v-icon small color="#FDD835">far fa-grin-squint</v-icon>
           </span>
-        </v-tooltip>
-          <!-- <v-icon size="24px">{{ icon }}</v-icon> -->
-        </v-btn>
-        <Translate></Translate>
-        <Weather></Weather>
-      </v-card-text>
+            </v-tooltip>
+            <!-- <v-icon size="24px">{{ icon }}</v-icon> -->
+          </v-btn>
 
-      <v-card-text class="white--text pt-0">
-        <!-- Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. -->
-      </v-card-text>
-
-      <v-divider></v-divider>
-
-      <v-card-text class="white--text">
-        &copy;2019 — <strong>Ming</strong>
-
-      </v-card-text>
-
+        </v-card-text>
+        <v-spacer></v-spacer>
+      </v-card-actions>
     </v-card>
   </v-footer>
 </template>
@@ -51,7 +56,7 @@
   import Translate from '@/components/Translate.vue'
 
   export default {
-    name: 'Footer',
+    name: "Footer",
     components: {
       Weather,
       Translate
@@ -59,22 +64,20 @@
     data: () => ({
       icons: [
         {
-          icon : 'fab fa-github',
-          link : 'http://github.com/mkl0819',
-          name : '깃허브'
+          icon: 'fab fa-github',
+          link: 'https://github.com/321pancake',
+          name: '깃허브'
         },
         {
-          icon : 'fas fa-blog',
-          link : 'http://mkl0819.github.io',
-          name : '블로그'
+          icon: 'fas fa-blog',
+          link: 'http://mkl0819.github.io',
+          name: '블로그'
         }
       ]
     }),
   }
 </script>
 
-<style>
-.indigo {
-  width: 100%;
-}
+<style scoped>
+
 </style>
