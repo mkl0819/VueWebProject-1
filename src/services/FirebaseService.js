@@ -43,14 +43,22 @@ export default {
       })
   },
   postBoard(title, body, img) {
-    return firestore.collection(BOARDS).add({
-      doc_id:firestore.collection(BOARDS).doc().id,
-      boardViewCount:0,
-      title,
-      body,
-      img,
-      created_at: firebase.firestore.FieldValue.serverTimestamp()
-    })
+    let user = firebase.auth().currentUser;
+    if(user !== null){
+      let userEmail = user.email.split('@');
+      let userId = userEmail[0];
+      return firestore.collection(BOARDS).add({
+        doc_id:firestore.collection(BOARDS).doc().id,
+        boardViewCount:0,
+        title,
+        body,
+        img,
+        author:userId,
+        created_at: firebase.firestore.FieldValue.serverTimestamp()
+      })
+    }else{
+      alert("로그인을 하지 않으셨습니다. 로그인해주세요.")
+    }
   },
   updateBoardViewCount(doc_id){
     firestore.collection(BOARDS).where('doc_id','==',doc_id)
@@ -62,6 +70,16 @@ export default {
         });
       });
     })
+  },
+  updateViewPageCount(pagename){
+		let user = firebase.auth().currentUser;
+		if(user !== null){
+			let userEmail = user.email;
+			let currentUserRef = firestore.collection('users').doc(userEmail);
+			currentUserRef.update({
+				[pagename]: firebase.firestore.FieldValue.increment(1)
+			})
+		}
   },
   getImgUrl(pagename) {
     const imgCollection = firestore.collection(IMGBANNER)
@@ -91,15 +109,5 @@ export default {
 		}).catch(function(error) {
 			console.error('[Google Login Error]', error)
 		})
-	},
-  updateViewPageCount(pagename){
-		let user = firebase.auth().currentUser;
-		if(user !== null){
-			let userEmail = user.email;
-			let currentUserRef = firestore.collection('users').doc(userEmail);
-			currentUserRef.update({
-				[pagename]: firebase.firestore.FieldValue.increment(1)
-			})
-		}
-  }
+	}
 }
