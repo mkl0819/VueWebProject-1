@@ -8,24 +8,9 @@
     <!-- container -->
     <v-container>
       <!-- About Me -->
-      <v-layout my-5>
-        <v-flex xs12 sm6>
+      <About
+      ></About>
 
-          <router-link to="/" style="text-decoration:none; color:black">
-            <h2 class="display-1 font-weight-medium mb-3 text-xs-center text-sm-right mr-4">About Me</h2>
-          </router-link>
-
-          <p class="mr-4 my-5 text-xs-center text-sm-right grey--text">
-            안녕하세요.<br>
-            아주 작은 기적을 일으키는 밍입니다.<br>
-            저는 개발을 해보겠습니다.<br>
-            여러분들이 많이 도와주세요...<br>
-          </p>
-        </v-flex>
-        <v-flex  sm6>
-          <v-img class="aboutImg" :src="getImgUrl('ming.png')" aspect-ratio="1.5"/>
-        </v-flex>
-      </v-layout>
 
       <!-- Board -->
       <v-layout my-5>
@@ -87,6 +72,7 @@ import RepositoryList from '../components/RepositoryList'
 import Footer from '../components/Footer'
 import FirebaseService from '@/services/FirebaseService'
 import Person from'../components/Person'
+import About from '../components/About'
 
 export default {
 	name: 'HomePage',
@@ -144,7 +130,8 @@ export default {
 		ImgBanner,
 		BoardList,
 		RepositoryList,
-        Person
+        Person,
+        About
 	},
 	methods: {
 		getImgUrl(img) {
