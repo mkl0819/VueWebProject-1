@@ -64,7 +64,8 @@ import BoardList from '../components/BoardList'
 import RepositoryList from '../components/RepositoryList'
 import Footer from '../components/Footer'
 import FirebaseService from '@/services/FirebaseService'
-import Person from '../components/Person'
+import Person from'../components/Person'
+import About from '../components/About'
 import welcome from '../components/welcome.vue'
 
 export default {
@@ -123,7 +124,8 @@ export default {
     BoardList,
     RepositoryList,
     Person,
-    welcome
+    welcome,
+    About
   },
   methods: {
     getImgUrl(img) {
