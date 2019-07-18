@@ -64,13 +64,8 @@ import BoardList from '../components/BoardList'
 import RepositoryList from '../components/RepositoryList'
 import Footer from '../components/Footer'
 import FirebaseService from '@/services/FirebaseService'
-<<<<<<< HEAD
-import Person from'../components/Person'
-import About from '../components/About'
-=======
 import Person from '../components/Person'
 import welcome from '../components/welcome.vue'
->>>>>>> 9b37089fd9dab07554163faeae901817be25a7a3
 
 export default {
   name: 'HomePage',
@@ -134,22 +129,7 @@ export default {
     getImgUrl(img) {
       return require('../assets/' + img)
     },
-<<<<<<< HEAD
-	components: {
-		ImgBanner,
-		BoardList,
-		RepositoryList,
-        Person,
-        About
-	},
-	methods: {
-		getImgUrl(img) {
-			return require('../assets/' + img)
-		},
-    routeName(){
-=======
     routeName() {
->>>>>>> 9b37089fd9dab07554163faeae901817be25a7a3
       return this.$route.name
     },
     preLoader() {
