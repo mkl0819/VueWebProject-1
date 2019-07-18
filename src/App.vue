@@ -2,15 +2,25 @@
   <!-- vapp -->
   <v-app>
     <!-- vcontent -->
-    <v-content
+    <Header />
+
+    <v-content class="content"
         style="padding-right: 0px;">
-      <Header />
+      <video id="videoBG"
+             :src="videoUrl"
+             autoplay
+             loop
+             muted
+      >
+      </video>
       <!-- router -->
       <router-view class="main"/>
       <!-- scroll -->
+
     </v-content>
     <scroll />
     <Footer />
+
   </v-app>
 </template>
 
@@ -30,6 +40,15 @@ export default {
     scroll,
     Translate
   },
+
+  data() {
+    return {
+      videoUrl: require('@/assets/Space - 2381.mp4')
+    }
+  },
+  methods: {
+
+  }
 }
 </script>
 
@@ -52,4 +71,8 @@ export default {
   width: 100%;
 }
 
+
+#videoBG {
+  position: fixed;
+}
 </style>

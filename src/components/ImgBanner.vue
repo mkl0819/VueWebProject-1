@@ -59,7 +59,7 @@ export default {
   },
   mounted() {
     if(this.pagename === 'home') {
-      this.imgSrc = require('@/assets/disney-3283291_1920.png');
+      this.imgSrc = '';
     }else{
       this.bannerSetting(this.pagename)
     }
