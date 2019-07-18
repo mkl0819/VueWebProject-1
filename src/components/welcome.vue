@@ -44,8 +44,8 @@ h1 {
   width: 100%;
   text-align: center;
   color: #ddd;
-  font-size: 10vw;
-  font-family: sans-serif;
+  font-size: 8vw;
+  font-family: Aladdin;
   letter-spacing: 0.2em;
 }
 
@@ -76,22 +76,28 @@ h1 span:nth-child(1){
   animation-delay: 1s;
 }
 h1 span:nth-child(2){
-  animation-delay: 1.5s;
+  animation-delay: 1.4s;
 }
 h1 span:nth-child(3){
-  animation-delay: 2s;
+  animation-delay: 1.8s;
 }
 h1 span:nth-child(4){
-  animation-delay: 2.5s;
+  animation-delay: 2.2s;
 }
 h1 span:nth-child(5){
-  animation-delay: 3s;
+  animation-delay: 2.6s;
 }
 h1 span:nth-child(6){
-  animation-delay: 3.5s;
+  animation-delay: 3s;
 }
 h1 span:nth-child(7){
-  animation-delay: 4s;
+  animation-delay: 3.4s;
+}
+h1 span:nth-child(8){
+  animation-delay: 3.8s;
+}
+h1 span:nth-child(9){
+  animation-delay: 4.2s;
 }
 </style>
 
@@ -100,13 +106,22 @@ h1 span:nth-child(7){
   <section>
     <video src="../assets/smoke.mp4" autoplay muted></video>
     <h1>
-      <span>W</span>
+      <!-- <span>W</span>
       <span>E</span>
       <span>L</span>
       <span>C</span>
       <span>O</span>
       <span>M</span>
+      <span>E</span> -->
+      <span>M</span>
+      <span>A</span>
+      <span>K</span>
       <span>E</span>
+      <span>a</span>
+      <span>W</span>
+      <span>I</span>
+      <span>S</span>
+      <span>H</span>
     </h1>
   </section>
 <!-- </div> -->
