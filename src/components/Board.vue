@@ -9,6 +9,9 @@
       height: auto!important;
     }
   }
+  /* .v-card, .v-sheet, .v-datatable, .v-datatable__actions, .theme--light.v-sheet {
+   background-color: #ffffff87!important;
+} */
 </style>
 <template>
 <v-layout>
@@ -18,24 +21,21 @@
       <!-- <v-btn color="primary" dark >Open Dialog</v-btn> -->
       <v-hover>
       <v-card v-on="on"
+      style="max-width:400px;"
       slot-scope="{ hover }"
       :class="`elevation-${hover ? 12 : 2}`"
-      class="mx-auto card-item"
+      class="card-item"
       @click="updateBoardViewCountMethod"
       >
-        <v-img :src="imgSrc" height="200px">
+        <v-img :src="imgSrc" style="max-height:200px">
         </v-img>
         <v-card-title primary-title hover>
           <div>
-            <div class="headline">{{title}}</div>
-            <span class="grey--text body-txt">{{body}}</span>
-            <v-spacer></v-spacer>
-            <v-icon small>fas fa-eye</v-icon>
-            <span class="grey--text ml-2">{{boardViewCount}}</span>
-            <v-spacer></v-spacer>
-            작성일 : <span class="grey--text ml-2">{{created_at}}</span>
-            <v-spacer></v-spacer>
-            작성자 : <span class="grey--text ml-2">{{author}}</span>
+            <div class="headline oneLine">{{title}}</div>
+            <span class="grey--text body-txt oneLine">{{body}}</span>
+            <span class="grey--text oneLine"><v-icon small class="mr-1">fas fa-eye</v-icon>{{boardViewCount}}</span>
+            <span class="grey--text oneLine"><v-icon small class="mr-1">fas fa-clock</v-icon>{{created_at}}</span>
+            <span class="grey--text oneLine"><v-icon small class="mr-1">fas fa-user</v-icon>{{author}}</span>
           </div>
         </v-card-title>
       </v-card>
