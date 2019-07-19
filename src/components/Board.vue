@@ -32,6 +32,10 @@
             <v-spacer></v-spacer>
             <v-icon small>fas fa-eye</v-icon>
             <span class="grey--text ml-2">{{boardViewCount}}</span>
+            <v-spacer></v-spacer>
+            작성일 : <span class="grey--text ml-2">{{created_at}}</span>
+            <v-spacer></v-spacer>
+            작성자 : <span class="grey--text ml-2">{{author}}</span>
           </div>
         </v-card-title>
       </v-card>
@@ -46,10 +50,10 @@
         <div>
           <div class="headline">{{title}}</div>
           <span class="grey--text" >{{body}}</span>
-
         </div>
       </v-card-title>
     </v-card>
+
   <!-- </v-flex> -->
   </v-dialog>
 
@@ -68,11 +72,13 @@ export default {
 		body: {type: String},
 		imgSrc: {type: String},
     doc_id: {type:String},
-    boardViewCount: {type:Number}
+    boardViewCount: {type:Number},
+    created_at:{type:String},
+    author:{type:String}
 	},
 	data() {
 		return {
-			dialog: false
+			dialog: false,
 		}
 	},
   methods:{

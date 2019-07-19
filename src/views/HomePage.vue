@@ -65,8 +65,10 @@ import RepositoryList from '../components/RepositoryList'
 import Footer from '../components/Footer'
 import FirebaseService from '@/services/FirebaseService'
 
+
+
+import Person from'../components/Person'
 import About from '../components/About'
-import Person from '../components/Person'
 import welcome from '../components/welcome.vue'
 
 

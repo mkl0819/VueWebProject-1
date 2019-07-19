@@ -1,6 +1,6 @@
 <template>
   <!-- vapp -->
-  <v-app>
+  <v-app v-scroll="onScroll">
     <!-- vcontent -->
     <Header />
     <video id="videoBG"
@@ -42,11 +42,23 @@ export default {
 
   data() {
     return {
-      videoUrl: require('@/assets/Space - 2381.mp4')
+      offsetTop: 0,
+      videoUrl: require('@/assets/Temple - 20773.mp4')
     }
   },
   methods: {
+    onScroll(e) {
+      this.offsetTop = window.scrollY;
+    },
+    show(){
 
+    }
+  },
+  watch:{
+    offsetTop: function(){
+      var video = document.getElementById('videoBG');
+      video.style.filter= 'blur('+(this.offsetTop/20)+'px)';
+    }
   }
 }
 </script>
@@ -69,8 +81,6 @@ export default {
   height: 100%;
   width: 100%;
 }
-
-
 #videoBG {
   position: fixed;
   height: auto;
