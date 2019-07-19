@@ -57,7 +57,7 @@ export default {
   watch:{
     offsetTop: function(){
       var video = document.getElementById('videoBG');
-      video.style.filter= 'blur('+(this.offsetTop/20)+'px)';
+      video.style.filter= 'blur('+(this.offsetTop/150)+'px)';
     }
   }
 }

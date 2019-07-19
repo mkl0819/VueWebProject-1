@@ -1,6 +1,6 @@
 <script src="https://kit.fontawesome.com/487b296483.js"></script>
 <template>
-    <div class="card middle">
+    <div class="card middle" style="background-color: #fff0;">
         <div class="front">
             <img :src="image"/>
         </div>
@@ -50,7 +50,7 @@
     font-family: "monofont";
 }
     body{
-        background: #333;
+        background: #fff0;
     }
     .middle {
         position: absolute;
@@ -62,6 +62,7 @@
         cursor: pointer;
         width: 100%;
         height: 100%;
+        background-color: #fff0;
     }
     .front, .back {
         width: 100%;
@@ -70,6 +71,7 @@
         backface-visibility: hidden;
         position: absolute;
         transition: transform .6s linear;
+        border-radius: 50%;
     }
 
     .front img{
@@ -82,6 +84,8 @@
     .back{
         background: #f1f1f1;
         transform: perspective(600px) rotateY(180deg);
+        margin-left: 10%;
+        width: 80%;
     }
     .back-content{
         color: #2c3e50;
@@ -104,7 +108,7 @@
     }
 
     .sm a:hover{
-        background: #2c3e50;
+        background: #E4BD5B;
         color: white;
     }
     .card:hover > .front{
