@@ -18,7 +18,7 @@
     <v-layout my-5>
       <v-flex xs12>
         <router-link to="/Board" style="text-decoration:none; color:black">
-          <h2 class="display-1 font-weight-medium my-5 text-xs-center">Board</h2>
+          <h2 class="my-5 text-xs-center page_title">Board</h2>
         </router-link>
         <BoardList></BoardList>
       </v-flex>
@@ -27,25 +27,27 @@
     <!-- Github -->
     <v-layout my-5>
       <v-flex xs12>
+<<<<<<< HEAD
         <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
+        <v-card flat style="background-color:#fff0">
+          <v-container fluid grid-list-lg style="background-color:#fff0;">
+=======
+        <h2 class="my-5 text-xs-center page_title">About Us</h2>
         <v-card flat color="white">
           <v-container fluid grid-list-lg>
+>>>>>>> d5e6042d7c1fe48336681b2029ccadbc4f7f6e3f
             <v-layout row wrap>
               <v-flex xs12 sm6 v-for="team in teams">
-                <v-card color="white" class="black--text" style="min-width: 200px; min-height: 300px;">
+                <v-card class="black--text" style="min-width: 200px; min-height: 300px; background-color: #fff0; box-shadow: none!important;">
                   <Person :name="team.name" :description="team.description" :image="team.image" :url="team.url"></Person>
+<<<<<<< HEAD
+=======
                   <v-layout row>
                     <v-flex xs7>
 
                     </v-flex>
-                    <!--<v-flex xs5>
-                          <v-img
-                                  :src="team.image"
-                                  height="125px"
-                                  contain
-                          ></v-img>
-                        </v-flex>-->
                   </v-layout>
+>>>>>>> d5e6042d7c1fe48336681b2029ccadbc4f7f6e3f
                 </v-card>
               </v-flex>
             </v-layout>
@@ -64,9 +66,13 @@ import BoardList from '../components/BoardList'
 import RepositoryList from '../components/RepositoryList'
 import Footer from '../components/Footer'
 import FirebaseService from '@/services/FirebaseService'
+
+
+
 import Person from'../components/Person'
 import About from '../components/About'
 import welcome from '../components/welcome.vue'
+
 
 export default {
   name: 'HomePage',
@@ -77,8 +83,8 @@ export default {
           age: 26,
           description: '야오밍입니다.',
           url: 'https://lab.ssafy.com/mkl0819',
-          image: require('@/assets/ming.png'),
-          //image: "https://avataaars.io/?avatarStyle=Circle&topType=LongHairBob&accessoriesType=Round&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtCrewNeck&clotheColor=Heather&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light",
+          //image: require('@/assets/ming.png'),
+          image: "https://avataaars.io/?avatarStyle=Circle&topType=LongHairBob&accessoriesType=Round&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtCrewNeck&clotheColor=Heather&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light",
           token: 'YwemDXZ5dD-Hxgx-dj5o',
           key: false,
           userName: 'mkl0819'
@@ -88,8 +94,8 @@ export default {
           age: 28,
           description: '학벌 깡패입니다.',
           url: 'https://lab.ssafy.com/leesangju92',
-          image: require('@/assets/sang.png'),
-          //image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
+          //image: require('@/assets/sang.png'),
+          image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortRound&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Blue03&eyeType=Surprised&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light',
           token: 'XLZHQWzDiR5vY3px3oWu',
           key: false,
           userName: 'mkl0819'
@@ -99,8 +105,8 @@ export default {
           age: 27,
           description: '그냥 깡패입니다.',
           url: 'https://lab.ssafy.com/aegis1920',
-          image: require('@/assets/leehobin.jpg'),
-          //image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
+          //image: require('@/assets/leehobin.jpg'),
+          image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortRound&accessoriesType=Round&hairColor=Black&facialHairType=BeardLight&facialHairColor=Black&clotheType=Hoodie&clotheColor=Gray02&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Light',
           token: '6izgztskLYEhJ__s4Jim',
           key: false,
           userName: 'aegis1920'
@@ -110,8 +116,8 @@ export default {
           age: 27,
           description: '전의환 입니다.',
           url: 'https://lab.ssafy.com/jeon',
-          image: require('@/assets/profile.png'),
-          //image: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Round&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Blue03&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Pale',
+          //image: require('@/assets/profile.png'),
+          image: 'https://avataaars.io/?avatarStyle=Circle&topType=Eyepatch&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=GraphicShirt&clotheColor=Pink&graphicType=SkullOutline&eyeType=Surprised&eyebrowType=RaisedExcitedNatural&mouthType=Serious&skinColor=Tanned',
           token: 'nxzw23Tzc1aFThgMNEvo',
           key: false,
           userName: 'jeon'
@@ -155,9 +161,5 @@ export default {
 </script>
 
 <style>
-/* @media screen and (max-width:768px){
-  .aboutTxt {
-    text-align: center;
-  }
-} */
+
 </style>

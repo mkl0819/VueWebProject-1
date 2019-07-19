@@ -45,11 +45,11 @@ h1 {
   text-align: center;
   color: #ddd;
   font-size: 8vw;
-  font-family: Aladdin;
   letter-spacing: 0.2em;
 }
 
 h1 span {
+  font-family: Aladdin!important;
   opacity: 0;
   display: inline-block;
   animation: animate 1s linear forwards;

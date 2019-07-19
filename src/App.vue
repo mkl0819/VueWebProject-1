@@ -8,20 +8,18 @@
            autoplay
            loop
            muted
-
     >
     </video>
     <v-content class="content"
         style="padding-right: 0px;">
 
       <!-- router -->
-      <router-view class="main"/>
-      <!-- scroll -->
+      <router-view/>
 
+      <!-- scroll -->
     </v-content>
     <scroll />
     <Footer />
-
   </v-app>
 </template>
 
@@ -59,7 +57,7 @@ export default {
   watch:{
     offsetTop: function(){
       var video = document.getElementById('videoBG');
-      video.style.filter= 'blur('+(this.offsetTop/20)+'px)';
+      video.style.filter= 'blur('+(this.offsetTop/150)+'px)';
     }
   }
 }
@@ -85,6 +83,9 @@ export default {
 }
 #videoBG {
   position: fixed;
+  height: auto;
+  width: auto;
+  z-index: 0;
 }
 .threeLine{
   overflow: hidden;
