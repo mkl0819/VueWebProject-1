@@ -8,7 +8,6 @@
            autoplay
            loop
            muted
-
     >
     </video>
     <v-content class="content"
