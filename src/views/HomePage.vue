@@ -18,7 +18,7 @@
     <v-layout my-5>
       <v-flex xs12>
         <router-link to="/Board" style="text-decoration:none; color:black">
-          <h2 class="display-1 font-weight-medium my-5 text-xs-center">Board</h2>
+          <h2 class="my-5 text-xs-center page_title">Board</h2>
         </router-link>
         <BoardList></BoardList>
       </v-flex>
@@ -27,7 +27,7 @@
     <!-- Github -->
     <v-layout my-5>
       <v-flex xs12>
-        <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
+        <h2 class="my-5 text-xs-center page_title">About Us</h2>
         <v-card flat color="white">
           <v-container fluid grid-list-lg>
             <v-layout row wrap>
@@ -38,13 +38,6 @@
                     <v-flex xs7>
 
                     </v-flex>
-                    <!--<v-flex xs5>
-                          <v-img
-                                  :src="team.image"
-                                  height="125px"
-                                  contain
-                          ></v-img>
-                        </v-flex>-->
                   </v-layout>
                 </v-card>
               </v-flex>
@@ -155,9 +148,5 @@ export default {
 </script>
 
 <style>
-/* @media screen and (max-width:768px){
-  .aboutTxt {
-    text-align: center;
-  }
-} */
+
 </style>

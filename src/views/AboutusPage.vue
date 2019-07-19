@@ -49,51 +49,6 @@
       </v-flex>
     </v-layout>
 
-
-
-    <!-- Post -->
-    <!-- <v-layout my-5>
-        <v-flex xs12>
-          <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
-          <v-card>
-            <v-container
-                    fluid
-                    grid-list-lg
-            >
-              <v-layout row wrap>
-                <v-flex xs12 v-for="team in teams">
-                  <v-card color="#522A83" class="white--text">
-                    <v-layout row>
-                      <v-flex xs10>
-                        <v-card-title primary-title>
-                          <div>
-                            <div class="headline">{{team.name}}'s Repository</div>
-                          </div>
-                        </v-card-title>
-                      </v-flex>
-                      <v-flex xs2>
-                        <v-btn icon @click="team.key = !team.key">
-                          <v-icon color="white">{{ team.key ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
-                        </v-btn>
-                      </v-flex>
-                    </v-layout>
-                    <v-divider light></v-divider>
-                  </v-card>
-                  <v-flex v-if="team.key">
-                    <v-slide-y-transition>
-                    <RepositoryList
-                        :token="team.token"
-                        :userName="team.userName"
-                    ></RepositoryList>
-                    </v-slide-y-transition>
-                  </v-flex>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-card>
-        </v-flex>
-      </v-layout> -->
-
   </v-container>
 </div>
 </template>
@@ -117,7 +72,6 @@ export default {
           description: '야오밍입니다.',
           url: 'https://lab.ssafy.com/mkl0819',
           image: require('@/assets/mk.png'),
-          // image: "https://avataaars.io/?avatarStyle=Transparent&topType=LongHairBob&accessoriesType=Round&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtCrewNeck&clotheColor=Heather&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Light",
           token: 'YwemDXZ5dD-Hxgx-dj5o',
           key: false,
           userName: 'mkl0819'
@@ -128,7 +82,6 @@ export default {
           description: '학벌 깡패입니다.',
           url: 'https://lab.ssafy.com/leesangju92',
           image: require('@/assets/sangju.png'),
-          // image: 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=CollarSweater&clotheColor=Blue03&eyeType=Surprised&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light',
           token: 'XLZHQWzDiR5vY3px3oWu',
           key: false,
           userName: 'leesangju92'
@@ -139,7 +92,6 @@ export default {
           description: '그냥 깡패입니다.',
           url: 'https://lab.ssafy.com/aegis1920',
           image: require('@/assets/hobin.png'),
-          // image: 'https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortRound&accessoriesType=Round&hairColor=Black&facialHairType=BeardLight&facialHairColor=Black&clotheType=Hoodie&clotheColor=Gray02&eyeType=Default&eyebrowType=Default&mouthType=Smile&skinColor=Light',
           token: '6izgztskLYEhJ__s4Jim',
           key: false,
           userName: 'aegis1920'
@@ -150,7 +102,6 @@ export default {
           description: '전의환 입니다.',
           url: 'https://lab.ssafy.com/jeon',
           image: require('@/assets/jeon.png'),
-          // image: 'https://avataaars.io/?avatarStyle=Transparent&topType=Eyepatch&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=GraphicShirt&clotheColor=Pink&graphicType=SkullOutline&eyeType=Surprised&eyebrowType=RaisedExcitedNatural&mouthType=Serious&skinColor=Tanned',
           token: 'nxzw23Tzc1aFThgMNEvo',
           key: false,
           userName: 'jeon'
@@ -170,9 +121,13 @@ export default {
     showRepo(userName){
       if(this.current!=''){
         document.getElementById(this.current).style.display = 'none';
+        if(this.current == userName){
+          this.current = ''
+          return;
+        }
       }
-      document.getElementById(userName).style.display = 'block';
-      this.current = userName
+        document.getElementById(userName).style.display = 'block';
+        this.current = userName
     }
   }
 }
