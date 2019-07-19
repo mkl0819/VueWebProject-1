@@ -8,8 +8,7 @@
   <v-container>
     <v-layout my-5>
       <v-flex xs12>
-        <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
-
+          <h2 class="display-1 font-weight-medium my-5 text-xs-center">About Us</h2>
         <v-layout wrap>
           <v-flex v-for="team in teams" xs12 sm6 lg3 pa-2>
             <v-hover>

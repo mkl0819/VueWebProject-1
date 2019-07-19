@@ -2,8 +2,9 @@
   <v-layout column px-4>
     <v-flex v-for="i in repositories.length > limits ? limits : repositories.length" xs12 sm6 md4 lg3>
       <v-divider v-if="i === 1"></v-divider>
-      <Repository :repos="repositories[i - 1]"
-      :token="token"
+      <Repository
+              :repos="repositories[i - 1]"
+              :token="token"
       ></Repository>
       <v-divider></v-divider>
     </v-flex>

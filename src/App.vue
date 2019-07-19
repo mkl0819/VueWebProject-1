@@ -3,24 +3,23 @@
   <v-app>
     <!-- vcontent -->
     <Header />
-
+    <video id="videoBG"
+           :src="videoUrl"
+           autoplay
+           loop
+           muted
+    >
+    </video>
     <v-content class="content"
         style="padding-right: 0px;">
-      <video id="videoBG"
-             :src="videoUrl"
-             autoplay
-             loop
-             muted
-      >
-      </video>
-      <!-- router -->
-      <router-view class="main"/>
-      <!-- scroll -->
 
+      <!-- router -->
+      <router-view/>
+
+      <!-- scroll -->
     </v-content>
     <scroll />
     <Footer />
-
   </v-app>
 </template>
 
@@ -74,5 +73,8 @@ export default {
 
 #videoBG {
   position: fixed;
+  height: auto;
+  width: auto;
+  z-index: 0;
 }
 </style>
